@@ -6,6 +6,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "PixelifySans";
+  src: url("fonts/PixelifySans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+#gggggg {
+  font-family: "PixelifySans", monospace;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -40,7 +52,8 @@ html {
 }
 
 body {
-  font-family: "Press Start 2P", monospace;
+  /* font-family: "Press Start 2P", monospace; */
+  font-family: "PixelifySans", monospace;
   background-color: var(--bg-dark);
   color: var(--text-color);
   line-height: 1.8;
