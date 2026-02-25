@@ -1,7 +1,163 @@
 <!doctype html>
-<html>
-  <head></head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
   <body>
-    test
+    <header class="header">
+      <div class="container">
+        <h1 class="glitch">YOUR NAME</h1>
+        <p class="subtitle">Game Developer • Pixel Artist • Code Wizard</p>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="container">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <span class="theme-icon">☀</span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section id="about" class="section">
+        <div class="container">
+          <h2 class="section-title">About Me</h2>
+          <div class="pixel-box">
+            <p>
+              Welcome to my 8-bit corner of the internet! Add your bio here.
+              Talk about your passion for retro gaming, development, or whatever
+              makes you unique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <h2 class="section-title">Projects</h2>
+
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  src="https://via.placeholder.com/300x200/4a4a4a/00ff00?text=Project+1"
+                  alt="Project 1"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Project Name 1</h3>
+                <p class="project-description">
+                  Brief description of your project. What technologies did you
+                  use? What problem does it solve?
+                </p>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">Live Demo</a>
+                  <a href="#" class="btn btn-secondary">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  src="https://via.placeholder.com/300x200/4a4a4a/ff00ff?text=Project+2"
+                  alt="Project 2"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Project Name 2</h3>
+                <p class="project-description">
+                  Another awesome project description. Highlight the key
+                  features and your role in the development.
+                </p>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">Live Demo</a>
+                  <a href="#" class="btn btn-secondary">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  src="https://via.placeholder.com/300x200/4a4a4a/00ffff?text=Project+3"
+                  alt="Project 3"
+                />
+              </div>
+              <div class="project-content">
+                <h3 class="project-title">Project Name 3</h3>
+                <p class="project-description">
+                  Tell visitors what makes this project special. Include
+                  technical details or interesting challenges.
+                </p>
+                <div class="project-links">
+                  <a href="#" class="btn btn-primary">Live Demo</a>
+                  <a href="#" class="btn btn-secondary">GitHub</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <h2 class="section-title">Contact</h2>
+          <div class="pixel-box contact-box">
+            <p>Let's connect! Find me on:</p>
+            <div class="social-links">
+              <a href="#" class="social-link">GitHub</a>
+              <a href="#" class="social-link">Twitter</a>
+              <a href="#" class="social-link">LinkedIn</a>
+              <a href="mailto:your.email@example.com" class="social-link"
+                >Email</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Your Name. Built with ❤️ and pixels.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeIcon = document.querySelector(".theme-icon");
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem("theme") || "dark";
+      html.setAttribute("data-theme", currentTheme);
+      updateThemeIcon(currentTheme);
+
+      themeToggle.addEventListener("click", () => {
+        const theme = html.getAttribute("data-theme");
+        const newTheme = theme === "dark" ? "light" : "dark";
+
+        html.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        themeIcon.textContent = theme === "dark" ? "☀" : "🌙";
+      }
+    </script>
   </body>
 </html>
