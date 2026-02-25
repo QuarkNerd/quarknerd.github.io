@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quarknerd</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./public/styles.css" />
     <link rel="canonical" href="https://quarknerd.github.io/" />
   </head>
   <body>
@@ -19,9 +19,11 @@
 
     <nav class="nav">
       <div class="container">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#css-projects" class="nav-link">CSS Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a target="_blank" href="#about" class="nav-link">About</a>
+        <a target="_blank" href="#css-projects" class="nav-link"
+          >CSS Projects</a
+        >
+        <a target="_blank" href="#contact" class="nav-link">Contact</a>
         <button
           id="theme-toggle"
           class="theme-toggle"
@@ -51,25 +53,39 @@
         <div class="container">
           <div class="section-title-container">
             <h2 class="section-title">CSS Projects</h2>
-            A selection of apps built entirely using HTML and CSS
+            A selection of apps built entirely using HTML and CSS and avoiding
+            all javascripts
           </div>
           <div class="projects-grid">
             <div class="project-card">
               <div class="project-image">
-                <img
-                  src="https://via.placeholder.com/300x200/4a4a4a/00ff00?text=Project+1"
-                  alt="Project 1"
-                />
+                <img src="./public/img/projects/calc.png" alt="Project 1" />
               </div>
               <div class="project-content">
-                <h3 class="project-title">Project Name 1</h3>
+                <h3 class="project-title">Calculator</h3>
                 <p class="project-description">
-                  Brief description of your project. What technologies did you
-                  use? What problem does it solve?
+                  For the times when you don't have one handy, but you do have a
+                  modern browser, and someone's forced off your JavaScript.
                 </p>
                 <div class="project-links">
-                  <a href="#" class="btn btn-primary">Live Demo</a>
-                  <a href="#" class="btn btn-secondary">GitHub</a>
+                  <a
+                    target="_blank"
+                    href="https://quarknerd.github.io/noJS/calc"
+                    class="btn btn-primary"
+                    >Live Demo</a
+                  >
+                  <a
+                    target="_blank"
+                    href="https://github.com/QuarkNerd/noJS"
+                    class="btn btn-secondary"
+                    >GitHub</a
+                  >
+                  <a
+                    target="_blank"
+                    href="https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html"
+                    class="btn btn-tertiary"
+                    >Blog</a
+                  >
                 </div>
               </div>
             </div>
@@ -88,8 +104,12 @@
                   features and your role in the development.
                 </p>
                 <div class="project-links">
-                  <a href="#" class="btn btn-primary">Live Demo</a>
-                  <a href="#" class="btn btn-secondary">GitHub</a>
+                  <a target="_blank" href="#" class="btn btn-primary"
+                    >Live Demo</a
+                  >
+                  <a target="_blank" href="#" class="btn btn-secondary"
+                    >GitHub</a
+                  >
                 </div>
               </div>
             </div>
@@ -108,8 +128,12 @@
                   technical details or interesting challenges.
                 </p>
                 <div class="project-links">
-                  <a href="#" class="btn btn-primary">Live Demo</a>
-                  <a href="#" class="btn btn-secondary">GitHub</a>
+                  <a target="_blank" href="#" class="btn btn-primary"
+                    >Live Demo</a
+                  >
+                  <a target="_blank" href="#" class="btn btn-secondary"
+                    >GitHub</a
+                  >
                 </div>
               </div>
             </div>
@@ -125,10 +149,14 @@
           <div class="pixel-box contact-box">
             <p>Let's connect! Find me on:</p>
             <div class="social-links">
-              <a href="https://github.com/QuarkNerd" class="social-link"
+              <a
+                target="_blank"
+                href="https://github.com/QuarkNerd"
+                class="social-link"
                 >GitHub</a
               >
               <a
+                target="_blank"
                 href="https://www.linkedin.com/in/gurveera/"
                 class="social-link"
                 >LinkedIn</a
