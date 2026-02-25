@@ -14,10 +14,6 @@
   font-display: swap;
 }
 
-#gggggg {
-  font-family: "PixelifySans", monospace;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -52,8 +48,8 @@ html {
 }
 
 body {
-  /* font-family: "Press Start 2P", monospace; */
-  font-family: "PixelifySans", monospace;
+  font-family: "Press Start 2P", monospace;
+  /* font-family: "PixelifySans", monospace; */
   background-color: var(--bg-dark);
   color: var(--text-color);
   line-height: 1.8;
