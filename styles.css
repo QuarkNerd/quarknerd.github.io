@@ -179,16 +179,19 @@ body {
   border-bottom: 2px dashed var(--border-color);
 }
 
-.section-title {
-  font-size: clamp(16px, 4vw, 24px);
-  color: var(--primary-color);
-  margin-bottom: 40px;
-  text-align: center;
-  text-transform: uppercase;
+.section-title-container {
   position: relative;
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(16px, 4vw, 24px);
+  color: var(--primary-color);
+  margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
 .section-title::after {
