@@ -1,50 +1,153 @@
+export interface ProjectLink {
+  url: string;
+  label: string;
+  variant?: "primary" | "secondary" | "tertiary";
+}
+
 export interface Project {
-  id: number;
   title: string;
   description: string;
   image: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  blogUrl?: string;
+  links?: ProjectLink[];
 }
 
-export const projects: Project[] = [
+export interface ProjectSection {
+  id: string;
+  title: string;
+  description?: string;
+  projects: Project[];
+}
+
+const cssProjects: Project[] = [
   {
-    id: 1,
     title: "Calculator",
     description:
       "For the times when you don't have one handy, but you do have a modern browser, and someone's forced off your JavaScript.",
     image: "/img/projects/calc.png",
-    liveUrl: "https://quarknerd.github.io/noJS/calc",
-    githubUrl: "https://github.com/QuarkNerd/noJS",
-    blogUrl:
-      "https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html",
+    links: [
+      {
+        url: "https://quarknerd.github.io/noJS/calc",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/noJS",
+        label: "GitHub",
+        variant: "secondary",
+      },
+      {
+        url: "https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html",
+        label: "Blog",
+        variant: "tertiary",
+      },
+    ],
   },
   {
-    id: 2,
     title: "TicTacToe",
     description: "TicTacToe along with a completley balanced random CPU",
     image: "/img/projects/ticTacToe.png",
-    liveUrl: "https://quarknerd.github.io/noJS/tictactoe/",
-    githubUrl: "https://github.com/QuarkNerd/noJS",
-    blogUrl:
-      "https://blog.scottlogic.com/2024/05/17/noJS-2-stochastic-boogaloo.html",
+    links: [
+      {
+        url: "https://quarknerd.github.io/noJS/tictactoe/",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/noJS",
+        label: "GitHub",
+        variant: "secondary",
+      },
+      {
+        url: "https://blog.scottlogic.com/2024/05/17/noJS-2-stochastic-boogaloo.html",
+        label: "Blog",
+        variant: "tertiary",
+      },
+    ],
   },
   {
-    id: 3,
     title: "Flappy Bird",
-    description: "Incoming",
-    image: "https://via.placeholder.com/300x200/4a4a4a/00ffff?text=Project+3",
-    liveUrl: "#",
-    githubUrl: "https://github.com/QuarkNerd/noJS",
+    description:
+      "A fully functional, click to jump clone of the classic. No mobile support",
+    image: "img/projects/flappy.png",
+    links: [
+      {
+        url: "https://quarknerd.github.io/noJS/flappybird/",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/noJS",
+        label: "GitHub",
+        variant: "secondary",
+      },
+    ],
   },
   {
-    id: 4,
     title: "Pixel Art Maker",
     description:
       "My first ever CSS only app. CLick the colours at the top to choose one and click on the squares change their colour.",
     image: "/img/projects/pixelArt.png",
-    liveUrl: "https://quarknerd.github.io/noJS/pixelArt",
-    githubUrl: "https://github.com/QuarkNerd/noJS",
+    links: [
+      {
+        url: "https://quarknerd.github.io/noJS/pixelArt/",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/NoisyGamer",
+        label: "GitHub",
+        variant: "secondary",
+      },
+    ],
+  },
+];
+
+const gameProjects: Project[] = [
+  {
+    title: "Noisy Gamer",
+    description:
+      "Result of a game jam! Press space to jump and scream PEW to fire a laser",
+    image: "",
+    links: [
+      {
+        url: "https://quarknerd.github.io/NoisyGamer/",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/NoisyGamer",
+        label: "GitHub",
+        variant: "secondary",
+      },
+    ],
+  },
+  {
+    title: "Survive the Internet",
+    description:
+      "A clone of my favourite JackBox game. All about twisting your friend's words in funny ways. The only flaw in the game was you could only ever vote for one person. So I made a discord bot to fix that",
+    image: "",
+    links: [
+      {
+        url: "https://github.com/QuarkNerd/Survive_The_Internet_Discord_Bot",
+        label: "GitHub",
+        variant: "primary",
+      },
+    ],
+  },
+];
+
+export const projectSections: ProjectSection[] = [
+  {
+    id: "css-projects",
+    title: "CSS Projects",
+    description:
+      "A selection of apps built entirely using HTML and CSS and avoiding all javascripts",
+    projects: cssProjects,
+  },
+  {
+    id: "game-projects",
+    title: "Games",
+    description: "Some original, some clones, all fun.",
+    projects: gameProjects,
   },
 ];
