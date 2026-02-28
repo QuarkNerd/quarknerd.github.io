@@ -107,7 +107,7 @@ const gameProjects: Project[] = [
     title: "Noisy Gamer",
     description:
       "Result of a game jam! Press space to jump and scream PEW to fire a laser",
-    image: "",
+    image: "/img/projects/noisy.png",
     links: [
       {
         url: "https://quarknerd.github.io/NoisyGamer/",
@@ -124,13 +124,31 @@ const gameProjects: Project[] = [
   {
     title: "Survive the Internet",
     description:
-      "A clone of my favourite JackBox game. All about twisting your friend's words in funny ways. The only flaw in the game was you could only ever vote for one person. So I made a discord bot to fix that",
-    image: "",
+      "A clone of my favourite JackBox game. All about twisting your friend's words in funny ways. The only flaw in the game was you could only ever vote for one person. So I made a discord bot to fix that. Not currently hosted but you can run it yourself.",
+    image: "/img/projects/survive.png",
     links: [
       {
         url: "https://github.com/QuarkNerd/Survive_The_Internet_Discord_Bot",
         label: "GitHub",
         variant: "primary",
+      },
+    ],
+  },
+  {
+    title: "Fibbage",
+    description:
+      "Trivia meets deception. I created this clone because the orginal didn't have custom questions. Please try it out.",
+    image: "/img/projects/fibbage.png",
+    links: [
+      {
+        url: "https://quarknerd.github.io/Fibbage/",
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/Fibbage",
+        label: "GitHub",
+        variant: "secondary",
       },
     ],
   },
@@ -151,3 +169,6 @@ export const projectSections: ProjectSection[] = [
     projects: gameProjects,
   },
 ];
+// TODO
+// Fix font, add adventof code, fibbage ,self and matthsjam
+// add achievments
