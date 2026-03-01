@@ -1,3 +1,6 @@
+const BASE_URL =
+  process.env.NODE_ENV === "production" ? "" : "https://quarknerd.com";
+
 export interface ProjectLink {
   url: string;
   label: string;
@@ -26,7 +29,7 @@ const cssProjects: Project[] = [
     image: "/img/projects/calc.png",
     links: [
       {
-        url: "https://quarknerd.github.io/noJS/calc",
+        url: `${BASE_URL}/noJS/calc`,
         label: "Live Demo",
         variant: "primary",
       },
@@ -48,7 +51,7 @@ const cssProjects: Project[] = [
     image: "/img/projects/ticTacToe.png",
     links: [
       {
-        url: "https://quarknerd.github.io/noJS/tictactoe/",
+        url: `${BASE_URL}/noJS/tictactoe/`,
         label: "Live Demo",
         variant: "primary",
       },
@@ -71,7 +74,7 @@ const cssProjects: Project[] = [
     image: "img/projects/flappy.png",
     links: [
       {
-        url: "https://quarknerd.github.io/noJS/flappybird/",
+        url: `${BASE_URL}/noJS/flappybird/`,
         label: "Live Demo",
         variant: "primary",
       },
@@ -89,7 +92,7 @@ const cssProjects: Project[] = [
     image: "/img/projects/pixelArt.png",
     links: [
       {
-        url: "https://quarknerd.github.io/noJS/pixelArt/",
+        url: `${BASE_URL}/noJS/pixelArt/`,
         label: "Live Demo",
         variant: "primary",
       },
@@ -110,7 +113,7 @@ const gameProjects: Project[] = [
     image: "/img/projects/noisy.png",
     links: [
       {
-        url: "https://quarknerd.github.io/NoisyGamer/",
+        url: `${BASE_URL}/NoisyGamer/`,
         label: "Live Demo",
         variant: "primary",
       },
@@ -141,7 +144,7 @@ const gameProjects: Project[] = [
     image: "/img/projects/fibbage.png",
     links: [
       {
-        url: "https://quarknerd.github.io/Fibbage/",
+        url: `${BASE_URL}/Fibbage/`,
         label: "Live Demo",
         variant: "primary",
       },
