@@ -131,13 +131,14 @@ body {
 .nav .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch; /* Change from center to stretch */
   gap: 30px;
   flex-wrap: wrap;
   position: relative;
 }
 
-.nav-link {
+.nav-link,
+.theme-toggle {
   color: var(--text-color);
   text-decoration: none;
   font-size: 10px;
@@ -146,32 +147,19 @@ body {
   background-color: var(--bg-dark);
   transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Clear default button margins */
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.theme-toggle:hover {
   background-color: var(--primary-color);
   color: var(--bg-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 0 var(--secondary-color);
-}
-
-/* ===== THEME TOGGLE ===== */
-.theme-toggle {
-  background-color: var(--bg-dark);
-  border: 2px solid var(--primary-color);
-  color: var(--text-color);
-  font-size: 16px;
-  padding: 10px 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: inherit;
-  position: absolute;
-  right: 20px;
-}
-
-.theme-toggle:hover {
-  background-color: var(--primary-color);
-  transform: scale(1.1) rotate(15deg);
   box-shadow: 0 4px 0 var(--secondary-color);
 }
 
@@ -180,7 +168,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* ===== SECTIONS ===== */
 .section {
   padding: 60px 20px;
   border-bottom: 2px dashed var(--border-color);
@@ -409,12 +396,6 @@ body {
     padding: 40px 20px;
   }
 
-  .theme-toggle {
-    position: static;
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
   .glitch {
     font-size: 18px;
   }
@@ -423,13 +404,24 @@ body {
     font-size: 8px;
   }
 
-  .nav .container {
-    gap: 15px;
+  .nav {
+    padding: 15px 0;
   }
 
-  .nav-link {
-    font-size: 8px;
-    padding: 8px 16px;
+  .nav .container {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .nav-link,
+  .theme-toggle {
+    font-size: 8px; /* Standardised to 8px to match others */
+    padding: 8px 12px;
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 0;
+    width: auto;
+    max-width: none;
   }
 
   .section {
@@ -485,9 +477,24 @@ body {
     font-size: 7px;
   }
 
-  .nav-link {
+  .nav {
+    padding: 10px 0;
+  }
+
+  .nav .container {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .nav-link,
+  .theme-toggle {
     font-size: 7px;
     padding: 6px 12px;
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 0;
+    width: auto;
+    max-width: none;
   }
 
   .section-title {
@@ -514,4 +521,134 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ===== ACHIEVEMENTS ===== */
+.achievement-toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--bg-light);
+  color: var(--text-color);
+  padding: 16px;
+  border: 3px solid var(--accent-color);
+  box-shadow: 4px 4px 0 var(--bg-dark);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  transform: translateY(150px);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.4s;
+  pointer-events: none;
+}
+
+.achievement-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.achievement-toast-icon {
+  font-size: 24px;
+}
+
+.achievement-toast-header {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.achievement-toast-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+}
+
+.achievement-toast-desc {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+/* Achievements Page Styles */
+.achievements-stats {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: clamp(12px, 3vw, 18px);
+  color: var(--secondary-color);
+  padding: 20px;
+  border: 2px dashed var(--border-color);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.achievement-item {
+  background-color: var(--bg-medium);
+  border: 3px solid var(--border-color);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.2s ease;
+}
+
+.achievement-item:not(.locked):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--primary-color);
+}
+
+.achievement-icon {
+  font-size: 32px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.achievement-info h3 {
+  font-size: 14px;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.achievement-info p {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.achievement-item.locked {
+  background-color: var(--bg-dark);
+  border-color: #555;
+  opacity: 0.7;
+}
+
+.achievement-item.locked .achievement-icon {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+.achievement-item.locked h3 {
+  color: #888;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-size: 12px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary-color);
+  text-shadow: 2px 2px 0 var(--bg-dark);
 }
