@@ -70,7 +70,7 @@ const cssProjects: Project[] = [
   {
     title: "Flappy Bird",
     description:
-      "A fully functional, click to jump clone of the classic. No mobile support",
+      "A fully functional, click to jump clone of the classic. No mobile support. Blog coming soon.",
     image: "img/projects/flappy.png",
     links: [
       {
@@ -157,6 +157,57 @@ const gameProjects: Project[] = [
   },
 ];
 
+const otherProjects: Project[] = [
+  // {
+  //   title: "Advent of Code",
+  //   description:
+  //     "Solutions to the daily coding challenges from Advent of Code.",
+  //   image: "/img/projects/adventOfCode.png",
+  //   links: [
+  //     {
+  //       url: "https://github.com/QuarkNerd/AdventOfCode",
+  //       label: "GitHub",
+  //       variant: "secondary",
+  //     },
+  //   ],
+  // },
+  {
+    title: "Personal site",
+    description: "Did you know I have a personal website? Check it out!",
+    image: "/img/projects/site.png",
+    links: [
+      {
+        url: `${BASE_URL}/`,
+        label: "Live Demo",
+        variant: "primary",
+      },
+      {
+        url: "https://github.com/QuarkNerd/quarknerd.github.io",
+        label: "GitHub",
+        variant: "secondary",
+      },
+    ],
+  },
+  {
+    title: "PI by hand",
+    description:
+      "Not a software project, far from it. But probably the most nerdy thing I've ever taken part in. See if you can spot me if you know me.",
+    image: "/img/projects/pi.jpg",
+    links: [
+      {
+        url: `https://www.youtube.com/watch?v=LIg-6glbLkU`,
+        label: "YouTube",
+        variant: "primary",
+      },
+      {
+        url: "http://mathsjam.com/",
+        label: "MathsJam",
+        variant: "secondary",
+      },
+    ],
+  },
+];
+
 export const projectSections: ProjectSection[] = [
   {
     id: "css-projects",
@@ -171,7 +222,14 @@ export const projectSections: ProjectSection[] = [
     description: "Some original, some clones, all fun.",
     projects: gameProjects,
   },
+  {
+    id: "other",
+    title: "Other",
+    description:
+      "A collection of various projects that don't fit into the other categories.",
+    projects: otherProjects,
+  },
 ];
 // TODO
-// Fix font, add adventof code, fibbage ,self and matthsjam
+// Fix font, add adventof code, matthsjam
 // add achievments

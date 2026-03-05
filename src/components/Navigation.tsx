@@ -13,6 +13,12 @@ export default function Navigation() {
         <a href="#contact" className="nav-link">
           Contact
         </a>
+        <a href="#game-projects" className="nav-link">
+          Games
+        </a>
+        <a href="#other" className="nav-link">
+          Other
+        </a>
         <ThemeToggle />
       </div>
     </nav>
