@@ -2,13 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import { useAchievementStore } from "@/store/achievements";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const { trackInteraction } = useAchievementStore();
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +28,7 @@ export default function Footer() {
     }
 
     return () => observer.disconnect();
-  }, [trackInteraction]);
+  }, [trackInteraction, pathname]);
 
   return (
     <footer ref={footerRef} className="footer">

@@ -8,6 +8,7 @@ export interface ProjectLink {
 }
 
 export interface Project {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -23,6 +24,7 @@ export interface ProjectSection {
 
 const cssProjects: Project[] = [
   {
+    id: "calculator",
     title: "Calculator",
     description:
       "For the times when you don't have one handy, but you do have a modern browser, and someone's forced off your JavaScript.",
@@ -46,6 +48,7 @@ const cssProjects: Project[] = [
     ],
   },
   {
+    id: "ticTacToe",
     title: "TicTacToe",
     description: "TicTacToe along with a completley balanced random CPU",
     image: "/img/projects/ticTacToe.png",
@@ -68,6 +71,7 @@ const cssProjects: Project[] = [
     ],
   },
   {
+    id: "flappyBird",
     title: "Flappy Bird",
     description:
       "A fully functional, click to jump clone of the classic. No mobile support. Blog coming soon.",
@@ -86,6 +90,7 @@ const cssProjects: Project[] = [
     ],
   },
   {
+    id: "pixelArt",
     title: "Pixel Art Maker",
     description:
       "My first ever CSS only app. CLick the colours at the top to choose one and click on the squares change their colour.",
@@ -107,6 +112,7 @@ const cssProjects: Project[] = [
 
 const gameProjects: Project[] = [
   {
+    id: "noisyGamer",
     title: "Noisy Gamer",
     description:
       "Result of a game jam! Press space to jump and scream PEW to fire a laser",
@@ -125,6 +131,7 @@ const gameProjects: Project[] = [
     ],
   },
   {
+    id: "surviveTheInternet",
     title: "Survive the Internet",
     description:
       "A clone of my favourite JackBox game. All about twisting your friend's words in funny ways. The only flaw in the game was you could only ever vote for one person. So I made a discord bot to fix that. Not currently hosted but you can run it yourself.",
@@ -138,6 +145,7 @@ const gameProjects: Project[] = [
     ],
   },
   {
+    id: "fibbage",
     title: "Fibbage",
     description:
       "Trivia meets deception. I created this clone because the orginal didn't have custom questions. Please try it out.",
@@ -172,6 +180,7 @@ const otherProjects: Project[] = [
   //   ],
   // },
   {
+    id: "personalSite",
     title: "Personal site",
     description: "Did you know I have a personal website? Check it out!",
     image: "/img/projects/site.png",
@@ -189,6 +198,7 @@ const otherProjects: Project[] = [
     ],
   },
   {
+    id: "piByHand",
     title: "PI by hand",
     description:
       "Not a software project, far from it. But probably the most nerdy thing I've ever taken part in. See if you can spot me if you know me.",

@@ -13,6 +13,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              data-track="social_github"
             >
               GitHub
             </a>
@@ -21,10 +22,11 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              data-track="social_linkedin"
             >
               LinkedIn
             </a>
-            <a href="mailto:garora1410@yahoo.co.uk" className="social-link">
+            <a href="mailto:garora1410@yahoo.co.uk" className="social-link" data-track="social_email">
               Email
             </a>
           </div>

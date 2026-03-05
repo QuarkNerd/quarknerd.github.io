@@ -33,6 +33,18 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: "Returned after resting your eyes.",
     icon: "👋",
   },
+  {
+    id: "stalker",
+    title: "Stalker",
+    description: "Found all my online hiding spots!",
+    icon: "👀",
+  },
+  {
+    id: "recursion",
+    title: "Recursion",
+    description: "Wait, isn't this the site we're already on?",
+    icon: "🔄",
+  },
 ];
 
 interface AchievementState {
@@ -121,6 +133,22 @@ export const useAchievementStore = create<AchievementState>()(
           newlyUnlocked.push(
             ACHIEVEMENTS.find((a) => a.id === "return_visit")!,
           );
+        }
+
+        if (
+          !state.unlockedIds.includes("stalker") &&
+          state.interactionLog["social_github"] &&
+          state.interactionLog["social_linkedin"] &&
+          state.interactionLog["social_email"]
+        ) {
+          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "stalker")!);
+        }
+
+        if (
+          !state.unlockedIds.includes("recursion") &&
+          state.interactionLog["personalSite"]
+        ) {
+          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "recursion")!);
         }
 
         if (newlyUnlocked.length > 0) {
