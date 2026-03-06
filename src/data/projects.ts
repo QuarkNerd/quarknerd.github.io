@@ -223,7 +223,7 @@ export const projectSections: ProjectSection[] = [
     id: "css-projects",
     title: "CSS Projects",
     description:
-      "A selection of apps built entirely using HTML and CSS and avoiding all javascripts",
+      "A selection of apps built entirely using HTML and CSS and avoiding all JavaScript.",
     projects: cssProjects,
   },
   {
