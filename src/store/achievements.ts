@@ -45,6 +45,12 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: "Wait, isn't this the site we're already on?",
     icon: "🔄",
   },
+  {
+    id: "avid_reader",
+    title: "Avid Reader",
+    description: "You really like reading blogs, huh?",
+    icon: "📚",
+  },
 ];
 
 interface AchievementState {
@@ -146,9 +152,21 @@ export const useAchievementStore = create<AchievementState>()(
 
         if (
           !state.unlockedIds.includes("recursion") &&
-          state.interactionLog["personalSite"]
+          state.interactionLog["personalSite_recursion"]
         ) {
           newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "recursion")!);
+        }
+
+        // Avid Reader Achievement
+        const totalBlogClicks = Object.entries(state.interactionLog)
+          .filter(([key]) => key.endsWith("_blog"))
+          .reduce((sum, [_, count]) => sum + count, 0);
+
+        if (
+          !state.unlockedIds.includes("avid_reader") &&
+          totalBlogClicks >= 10
+        ) {
+          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "avid_reader")!);
         }
 
         if (newlyUnlocked.length > 0) {

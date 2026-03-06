@@ -22,7 +22,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 className={`btn btn-${link.variant || "primary"}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-track={project.id}
+                data-track={
+                  link.trackingId
+                    ? `${project.id}_${link.trackingId}`
+                    : `${project.id}_${index}`
+                }
               >
                 {link.label}
               </a>

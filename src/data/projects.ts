@@ -5,6 +5,7 @@ export interface ProjectLink {
   url: string;
   label: string;
   variant?: "primary" | "secondary" | "tertiary";
+  trackingId?: string;
 }
 
 export interface Project {
@@ -44,6 +45,7 @@ const cssProjects: Project[] = [
         url: "https://blog.scottlogic.com/2022/01/20/noJS-making-a-calculator-in-pure-css-html.html",
         label: "Blog",
         variant: "tertiary",
+        trackingId: "blog",
       },
     ],
   },
@@ -67,6 +69,7 @@ const cssProjects: Project[] = [
         url: "https://blog.scottlogic.com/2024/05/17/noJS-2-stochastic-boogaloo.html",
         label: "Blog",
         variant: "tertiary",
+        trackingId: "blog",
       },
     ],
   },
@@ -189,6 +192,7 @@ const otherProjects: Project[] = [
         url: `${BASE_URL}/`,
         label: "Live Demo",
         variant: "primary",
+        trackingId: "recursion",
       },
       {
         url: "https://github.com/QuarkNerd/quarknerd.github.io",
