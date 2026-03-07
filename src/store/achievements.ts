@@ -30,7 +30,7 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: "return_visit",
     title: "Welcome Back",
-    description: "Returned after resting your eyes.",
+    description: "Return after a day.",
     icon: "👋",
   },
   {
@@ -51,11 +51,18 @@ export const ACHIEVEMENTS: Achievement[] = [
     description: "You really like reading blogs, huh?",
     icon: "📚",
   },
+  {
+    id: "i_missed_you",
+    title: "I Missed You",
+    description: "Return after 10 days.",
+    icon: "🥲",
+  },
 ];
 
 interface AchievementState {
   unlockedIds: string[];
   interactionLog: Record<string, number>;
+  firstVisit: number | null;
   lastVisit: number | null;
   activeToast: Achievement | null;
 
@@ -70,6 +77,7 @@ export const useAchievementStore = create<AchievementState>()(
     (set, get) => ({
       unlockedIds: [],
       interactionLog: {},
+      firstVisit: null,
       lastVisit: null,
       activeToast: null,
 
@@ -87,87 +95,79 @@ export const useAchievementStore = create<AchievementState>()(
         const now = Date.now();
         const state = get();
 
-        // 1. Check the old visit time before we update it
-        if (state.lastVisit) {
-          const hoursSinceLastVisit =
-            (now - state.lastVisit) / (1000 * 60 * 60);
-          if (
-            hoursSinceLastVisit > 24 &&
-            !state.unlockedIds.includes("return_visit")
-          ) {
+        if (state.firstVisit != null) {
+          const hoursSinceFirstVisit =
+            (now - state.firstVisit!) / (1000 * 60 * 60);
+          if (hoursSinceFirstVisit > 24) {
             get().trackInteraction("return_visit");
+          }
+        } else {
+          set({ firstVisit: now });
+        }
+
+        if (state.lastVisit != null) {
+          const daysSinceLastVisit =
+            (now - state.lastVisit) / (1000 * 60 * 60 * 24);
+          if (daysSinceLastVisit > 10) {
+            get().trackInteraction("i_missed_you");
           }
         }
 
-        // 2. Update the lastVisit to right now
         set({ lastVisit: now });
       },
 
       evaluateAchievements: () => {
         const state = get();
-        const newlyUnlocked: Achievement[] = [];
+        const unlocked: string[] = [];
 
-        if (
-          !state.unlockedIds.includes("first_click") &&
-          Object.values(state.interactionLog).reduce((a, b) => a + b, 0) > 0
-        ) {
-          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "first_click")!);
+        const simpleAchievements = [
+          "i_missed_you",
+          "scroll_bottom",
+          "return_visit",
+        ];
+
+        for (const id of simpleAchievements) {
+          if (state.interactionLog[id]) {
+            unlocked.push(id);
+          }
+        }
+
+        const nonClickInteractions = ["scroll_bottom", "return_visit", "i_missed_you"];
+        const clickCount = Object.entries(state.interactionLog)
+          .filter(([key]) => !nonClickInteractions.includes(key))
+          .reduce((sum, [_, count]) => sum + count, 0);
+
+        if (clickCount > 0) {
+          unlocked.push("first_click");
+        }
+
+        if ((state.interactionLog["theme_toggle"] || 0) >= 5) {
+          unlocked.push("theme_toggle");
         }
 
         if (
-          !state.unlockedIds.includes("theme_toggle") &&
-          (state.interactionLog["theme_toggle"] || 0) >= 5
-        ) {
-          newlyUnlocked.push(
-            ACHIEVEMENTS.find((a) => a.id === "theme_toggle")!,
-          );
-        }
-
-        if (
-          !state.unlockedIds.includes("scroll_bottom") &&
-          state.interactionLog["scroll_bottom"]
-        ) {
-          newlyUnlocked.push(
-            ACHIEVEMENTS.find((a) => a.id === "scroll_bottom")!,
-          );
-        }
-
-        if (
-          !state.unlockedIds.includes("return_visit") &&
-          state.interactionLog["return_visit"]
-        ) {
-          newlyUnlocked.push(
-            ACHIEVEMENTS.find((a) => a.id === "return_visit")!,
-          );
-        }
-
-        if (
-          !state.unlockedIds.includes("stalker") &&
           state.interactionLog["social_github"] &&
           state.interactionLog["social_linkedin"] &&
           state.interactionLog["social_email"]
         ) {
-          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "stalker")!);
+          unlocked.push("stalker");
         }
 
-        if (
-          !state.unlockedIds.includes("recursion") &&
-          state.interactionLog["personalSite_recursion"]
-        ) {
-          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "recursion")!);
+        if (state.interactionLog["personalSite_recursion"]) {
+          unlocked.push("recursion");
         }
 
-        // Avid Reader Achievement
         const totalBlogClicks = Object.entries(state.interactionLog)
           .filter(([key]) => key.endsWith("_blog"))
           .reduce((sum, [_, count]) => sum + count, 0);
 
-        if (
-          !state.unlockedIds.includes("avid_reader") &&
-          totalBlogClicks >= 10
-        ) {
-          newlyUnlocked.push(ACHIEVEMENTS.find((a) => a.id === "avid_reader")!);
+        if (totalBlogClicks >= 10) {
+          unlocked.push("avid_reader");
         }
+
+        const newlyUnlocked = unlocked
+          .filter((id) => !state.unlockedIds.includes(id))
+          .map((id) => ACHIEVEMENTS.find((a) => a.id === id)!);
 
         if (newlyUnlocked.length > 0) {
           set((s) => ({
@@ -185,6 +185,7 @@ export const useAchievementStore = create<AchievementState>()(
         unlockedIds: state.unlockedIds,
         interactionLog: state.interactionLog,
         lastVisit: state.lastVisit,
+        firstVisit: state.firstVisit,
       }),
     },
   ),

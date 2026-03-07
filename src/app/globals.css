@@ -118,7 +118,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* ===== NAVIGATION ===== */
 .nav {
   background-color: var(--bg-light);
   padding: 20px 0;
@@ -131,7 +130,7 @@ body {
 .nav .container {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Change from center to stretch */
+  align-items: stretch;
   gap: 30px;
   flex-wrap: wrap;
   position: relative;
