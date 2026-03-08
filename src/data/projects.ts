@@ -100,7 +100,7 @@ const cssProjects: Project[] = [
     image: "/img/projects/pixelArt.png",
     links: [
       {
-        url: `${BASE_URL}/noJS/pixelArt/`,
+        url: `${BASE_URL}/noJS/pixelArt`,
         label: "Live Demo",
         variant: "primary",
       },
