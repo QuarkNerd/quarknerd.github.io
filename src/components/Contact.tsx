@@ -26,8 +26,19 @@ export default function Contact() {
             >
               LinkedIn
             </a>
-            <a href="mailto:garora1410@yahoo.co.uk" className="social-link" data-track="social_email">
+            <a
+              href="mailto:garora1410@yahoo.co.uk"
+              className="social-link"
+              data-track="social_email"
+            >
               Email
+            </a>
+            <a
+              href="https://mastodon.social/@Gurveer"
+              className="social-link"
+              data-track="social_mastodon"
+            >
+              Mastodon
             </a>
           </div>
         </div>

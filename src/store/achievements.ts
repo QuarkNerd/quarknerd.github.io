@@ -132,7 +132,11 @@ export const useAchievementStore = create<AchievementState>()(
           }
         }
 
-        const nonClickInteractions = ["scroll_bottom", "return_visit", "i_missed_you"];
+        const nonClickInteractions = [
+          "scroll_bottom",
+          "return_visit",
+          "i_missed_you",
+        ];
         const clickCount = Object.entries(state.interactionLog)
           .filter(([key]) => !nonClickInteractions.includes(key))
           .reduce((sum, [_, count]) => sum + count, 0);
@@ -148,7 +152,8 @@ export const useAchievementStore = create<AchievementState>()(
         if (
           state.interactionLog["social_github"] &&
           state.interactionLog["social_linkedin"] &&
-          state.interactionLog["social_email"]
+          state.interactionLog["social_email"] &&
+          state.interactionLog["social_mastodon"]
         ) {
           unlocked.push("stalker");
         }

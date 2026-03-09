@@ -225,7 +225,6 @@ body {
   line-height: 2;
 }
 
-/* ===== PROJECTS GRID ===== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
