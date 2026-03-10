@@ -90,6 +90,12 @@ const cssProjects: Project[] = [
         label: "GitHub",
         variant: "secondary",
       },
+      {
+        url: "https://blog.scottlogic.com/2026/03/09/noJS-3-flappy-bird.html",
+        label: "Blog",
+        variant: "tertiary",
+        trackingId: "blog",
+      },
     ],
   },
   {
